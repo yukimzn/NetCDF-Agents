@@ -1,0 +1,24 @@
+# 核心依赖
+xarray>=2024.0.0
+netCDF4>=1.6.0
+numpy>=1.24.0
+pandas>=2.0.0
+
+# LLM框架
+langchain>=0.3.0
+langchain-ollama>=0.1.0
+langgraph>=0.2.0
+
+# 科学计算
+scipy>=1.10.0
+matplotlib>=3.7.0
+dask>=2024.0.0
+
+# 地理空间（可选）
+xesmf>=0.8.0
+geopandas>=0.14.0
+regionmask>=0.10.0
+
+# 工具
+python-dotenv>=1.0.0
+pyyaml>=6.0
