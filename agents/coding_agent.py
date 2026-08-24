@@ -14,7 +14,7 @@ from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_ollama import ChatOllama
 
 # 假设 DatasetManager 和工具已正确配置
-from tools.tool2 import get_manager, set_dataset_manager
+from tools.tool import get_manager, set_dataset_manager
 
 
 # ----------------------------------------------------------------------
@@ -170,12 +170,9 @@ sys.stdout.flush()
 sys.stderr.flush()
 """
 
-        # ---- 拼接完整代码（包含文件路径和键的注入） ----
-        # 将 DatasetManager 传递的文件路径和当前键注入到前置代码中
-        # 这里由外部在调用前设置，或通过 allowed_modules 传入
+        # 拼接完整代码
         full_code = preamble + "\n" + code + "\n" + postamble
 
-        # ---- 构建安全的全局命名空间 ----
         safe_globals = {
             '__builtins__': {
                 'print': builtins.print,
@@ -309,7 +306,6 @@ class CodeGenerationAgent:
         for key in target_keys:
             meta = metadata.get(key, {})
             vars_list = meta.get('variables', [])
-            # 只展示前10个变量名（而非前20个），并标注总数
             var_display = ', '.join(vars_list[:10])
             if len(vars_list) > 10:
                 var_display += f" ... (共{len(vars_list)}个)"

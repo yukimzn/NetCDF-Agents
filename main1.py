@@ -4,7 +4,7 @@ from utils.DatasetManager import DatasetManager
 from utils.analyzer import NetCDFAnalyzer1
 from agents.process_agent import ProcessAgent
 from agents.coding_agent import CodingAgent
-from test import MainAgent
+from agents.main_agent import MainAgent
 
 
 def main():

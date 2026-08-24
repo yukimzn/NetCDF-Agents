@@ -135,10 +135,7 @@ def save_dataset(dataset_key: str, output_path: str, compress: bool = False) -> 
             # 2. 清除可能导致问题的非标准 calendar 编码（如 proleptic_gregorian）
             if 'calendar' in var.attrs:
                 try:
-                    # 如果 calendar 不是标准类型，重置编码以避免保存报错
                     import cftime
-                    # 不进行复杂判断，直接删除可能会引发冲突的 calendar 属性
-                    # 在大多数情况下，删除后仍可正常读取（保留 units 即可）
                     del ds_to_save[var_name].attrs['calendar']
                 except Exception:
                     pass  # 如果删除失败，忽略
